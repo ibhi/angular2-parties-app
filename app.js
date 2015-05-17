@@ -24,7 +24,7 @@ var PartiesComponent = (function () {
             description: desc
         };
         this.partiesService.addParty(party);
-        this.parties = this.partiesService.parties;
+        // this.parties = this.partiesService.parties;
     };
     PartiesComponent = __decorate([
         angular2_1.Component({
