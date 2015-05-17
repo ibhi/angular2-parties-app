@@ -15,6 +15,9 @@ var PartiesService = (function () {
             },
         ];
     }
+    PartiesService.prototype.addParty = function (party) {
+        this.parties.push(party);
+    };
     return PartiesService;
 })();
 exports.PartiesService = PartiesService;

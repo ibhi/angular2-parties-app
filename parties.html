@@ -6,3 +6,6 @@
 		<p>Description: {{party.description}}</p>
 	</li>
 </ul>
+<input type="text" #title placeholder="Party Title">
+<input type="text" #desc placeholder="Party Description">
+<button (click)="addParty(title.value, desc.value)"></button>

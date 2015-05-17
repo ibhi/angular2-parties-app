@@ -1,6 +1,6 @@
-import {IParties} from '../model/parties-model';
+import {IParty} from '../model/parties-model';
 export class PartiesService{
-	parties: Array<IParties>;
+	parties: Array<IParty>;
 	constructor() {
 		this.parties = [
 			{
@@ -16,5 +16,8 @@ export class PartiesService{
 				description: 'This is party 3'
 			},
 		]
+	}
+	addParty(party: IParty) :void{
+		this.parties.push(party);
 	}
 }

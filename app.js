@@ -14,8 +14,18 @@ var angular2_1 = require('angular2/angular2');
 var parties_service_1 = require('./service/parties-service');
 var PartiesComponent = (function () {
     function PartiesComponent(partiesService) {
-        this.parties = partiesService.parties;
+        this.partiesService = partiesService;
+        this.parties = this.partiesService.parties;
     }
+    PartiesComponent.prototype.addParty = function (title, desc) {
+        var party;
+        party = {
+            title: title,
+            description: desc
+        };
+        this.partiesService.addParty(party);
+        this.parties = this.partiesService.parties;
+    };
     PartiesComponent = __decorate([
         angular2_1.Component({
             selector: 'parties-list',

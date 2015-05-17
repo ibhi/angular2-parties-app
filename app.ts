@@ -1,7 +1,7 @@
 /// <reference path="typings/angular2/angular2.d.ts" />
 
 import {Component, View, bootstrap, For} from 'angular2/angular2';
-import {IParties} from './model/parties-model';
+import {IParty} from './model/parties-model';
 import {PartiesService} from './service/parties-service';
 
 @Component({
@@ -15,10 +15,23 @@ import {PartiesService} from './service/parties-service';
 })
 
 class PartiesComponent{
-	parties: Array<IParties>;
+	parties: Array<IParty>;
+	partiesService: PartiesService;
 
 	constructor(partiesService: PartiesService) {
-		this.parties = partiesService.parties;
+		this.partiesService = partiesService;
+		this.parties = this.partiesService.parties;
+	}
+
+	addParty(title: string, desc: string){
+		var party: IParty;
+		party = {
+			title: title,
+			description: desc
+		}
+		this.partiesService.addParty(party);
+		this.parties = this.partiesService.parties;
+
 	}
 
 }

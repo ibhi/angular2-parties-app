@@ -1,4 +1,4 @@
-export interface IParties{
+export interface IParty{
 	title: string;
 	description: string;
 }
