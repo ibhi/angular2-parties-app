@@ -10,6 +10,14 @@
 <body>
 	<parties-list></parties-list>
 	<script>
+	System.config({
+		paths: {
+			// '*' : '*.js',
+			// 'angular2/*' : 'angular2/*',
+			'service/*': 'service/*.js',
+			'model/*'	: 'model/*.js',
+		}
+	});
 		System.import('app');
 	</script>
 </body>

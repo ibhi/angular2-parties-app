@@ -1,4 +1,4 @@
-import {IParty} from '../model/parties-model';
+import {IParty} from 'model/parties-model';
 export class PartiesService{
 	parties: Array<IParty>;
 	constructor() {

@@ -1,4 +1,3 @@
-/// <reference path="typings/angular2/angular2.d.ts" />
 if (typeof __decorate !== "function") __decorate = function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
     switch (arguments.length) {
@@ -11,31 +10,30 @@ if (typeof __metadata !== "function") __metadata = function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var angular2_1 = require('angular2/angular2');
-var parties_service_1 = require('./service/parties-service');
+var forms_1 = require('angular2/forms');
+var parties_service_1 = require('service/parties-service');
 var PartiesComponent = (function () {
-    function PartiesComponent(partiesService) {
+    function PartiesComponent(partiesService, fb) {
         this.partiesService = partiesService;
         this.parties = this.partiesService.parties;
+        this.party = fb.group({
+            title: ['', forms_1.Validators.required],
+            description: ['', forms_1.Validators.required]
+        });
     }
-    PartiesComponent.prototype.addParty = function (title, desc) {
-        var party;
-        party = {
-            title: title,
-            description: desc
-        };
-        this.partiesService.addParty(party);
-        // this.parties = this.partiesService.parties;
+    PartiesComponent.prototype.addParty = function () {
+        this.partiesService.addParty(this.party.value);
     };
     PartiesComponent = __decorate([
         angular2_1.Component({
             selector: 'parties-list',
-            injectables: [parties_service_1.PartiesService]
+            injectables: [parties_service_1.PartiesService, forms_1.FormBuilder]
         }),
         angular2_1.View({
             templateUrl: 'parties.html',
-            directives: [angular2_1.For]
+            directives: [angular2_1.For, forms_1.formDirectives]
         }), 
-        __metadata('design:paramtypes', [parties_service_1.PartiesService])
+        __metadata('design:paramtypes', [parties_service_1.PartiesService, (typeof FormBuilder !== 'undefined' && FormBuilder) || Object])
     ], PartiesComponent);
     return PartiesComponent;
 })();
